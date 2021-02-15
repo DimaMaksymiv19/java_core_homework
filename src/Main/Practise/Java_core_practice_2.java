@@ -17,6 +17,7 @@ public class Java_core_practice_2 {
             int y = money;
             int x = (profit / 100) + y;
             money = y + x;
+
         }
         System.out.println("Вихідна сума");
         System.out.println(money);
