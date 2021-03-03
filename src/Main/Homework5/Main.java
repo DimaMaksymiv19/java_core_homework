@@ -1,6 +1,5 @@
 package Main.Homework5;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Main
@@ -26,6 +25,7 @@ public class Main
             System.out.println("10: Check if your Month has an even number of days.");
             System.out.println("Choose what do you need and write a number(1 - 10):");
             int choice = scan.nextInt();
+
             switch (choice){
                 case 1:{
                     System.out.println("Please enter the Month:");
@@ -34,7 +34,7 @@ public class Main
                         if (Months.valueOf(month).toString().equals(month)){
                             System.out.println("We really have " + month + " in Months");
                         }
-                    } catch (IllegalArgumentException e) {
+                    } catch (Exception e) {
                         System.out.println("We don't have " + month + " in Months");
                     }
                     System.out.println("Do you want continue?");
@@ -55,7 +55,7 @@ public class Main
                             if (month.getSeason().toString().equals(season)) {
                                 System.out.print(month + " ");
                             }
-                        }catch (IllegalArgumentException e){
+                        }catch (Exception e){
                             System.out.println("You have written wrong season");
 
                         }
