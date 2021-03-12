@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main
 {
@@ -11,12 +13,14 @@ public class Main
     public static void main(String[] args) {
 
         Commodity product = new Commodity("Table", 15.5f, 13, 21.44f);
+        Commodity product5 = new Commodity("Tabee", 15.5f, 13, 21.44f);
         Commodity product3 = new Commodity("Aable", 15.5f, 13, 21.44f);
         Commodity product4 = new Commodity("Bable", 15.5f, 13, 21.44f);
         ArrayList<Commodity> productList = new ArrayList<>();
         productList.add(product);
         productList.add(product3);
         productList.add(product4);
+        productList.add(product5);
 
 
         boolean k = true;
@@ -31,6 +35,7 @@ public class Main
             System.out.println("7: Sort by weight;");
             System.out.println("8: Show a product;");
             System.out.println("9: Exit;");
+            System.out.println("10: Search by name");
             System.out.println("(Please enter a number from 1 to 9)");
 
             int choose = 9;
@@ -95,6 +100,19 @@ public class Main
                 }
                 case 9: {
                     System.exit(0);
+                    break;
+                }
+                case 10:{
+                    System.out.println("Please enter name or part of name of product");
+                    String namePart = scan.next();
+                    for (Commodity el : productList){
+                        Pattern regex = Pattern.compile(namePart);
+                        Matcher matcher = regex.matcher("(.)*" + el.getName() + "(.)*");
+                        if (matcher.find()){
+                            System.out.println(el);
+                        }
+                    }
+                    wantToContinue();
                     break;
                 }
                 default: {
