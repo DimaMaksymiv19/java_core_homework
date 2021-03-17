@@ -16,14 +16,14 @@ public class Task2 {
         Person person = new Person("Jack","R",17);
         Account account = new Account("JackR", "hhggftt");
 
-        userAccounts.put(person, (List<Account>) account);
-        //printMap(userAccounts,  Arrays.asList(new Account("JackR", "hhggftt")));
+      //  userAccounts.put(person, (List<Account>) account);
+        printMap(userAccounts);
 
 
 
 
     }
-    private static void printMap(Map<Person, List<Account>> userAccounts, Account account){
+    private static void printMap(Map<Person, List<Account>> userAccounts){
         for (Map.Entry<Person, List<Account>> userAccount: userAccounts.entrySet()){
             System.out.println("Key = " + userAccount.getKey()+ " / Value = " + userAccount.getValue());
         }
