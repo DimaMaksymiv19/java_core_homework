@@ -153,12 +153,12 @@ public class Main {
         boolean haveAnimal = false;
 
         for (Map.Entry<Person, List<Animal>> mapEl : map.entrySet()) {
-            if (nameSearch.equals(mapEl.getKey().getName())){
+            if (nameSearch.equals(mapEl.getKey().getName())){//додати персон і знайти через ключ
                 System.out.println("Please enter animal name");
                 String animalNameForDelete = scan.next();
                 for (Animal el : mapEl.getValue()){
 
-                    if (el.getName().equals(animalNameForDelete)){
+                    if (el.getName().equals(animalNameForDelete)){//перебрати через ітератор і ремув
                         System.out.println("Success");
                         ArrayList<Animal> list = new ArrayList<>(mapEl.getValue());
 
