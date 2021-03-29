@@ -1,7 +1,5 @@
 package Main.Homework12;
 
-import Main.Practise12.Account;
-
 import java.util.*;
 
 public class Main {
@@ -45,7 +43,7 @@ public class Main {
                     break;
                 }
                 case 3: {
-                    deleteAnimal(map);
+                    deleteAnimal(map,"Mark",32);
                     k = wantToContinue();
                     break;
                 }
@@ -141,47 +139,34 @@ public class Main {
                 break;
             }
         }
-        if(!haveName){
+        if (!haveName) {
             System.out.println("There are not this name in the map");
         }
     }
 
-    private static void deleteAnimal(Map<Person, List<Animal>> map){
-        System.out.println("Please enter a person name");
-        String nameSearch = scan.next();
-        boolean haveNameInMap = false;
-        boolean haveAnimal = false;
+    private static void deleteAnimal(Map<Person, List<Animal>> map, String name, int age)
+    {
+        Person personForSearch = new Person(name, age);
 
-        for (Map.Entry<Person, List<Animal>> mapEl : map.entrySet()) {
-            if (nameSearch.equals(mapEl.getKey().getName())){//додати персон і знайти через ключ
-                System.out.println("Please enter animal name");
-                String animalNameForDelete = scan.next();
-                for (Animal el : mapEl.getValue()){
+        if (map.containsKey(personForSearch))
+        {
+            System.out.println("Please enter animal type");
+            String animalTypeDelete = scan.next();
+            System.out.println("Please enter animal name");
+            String animalNameForDelete = scan.next();
 
-                    if (el.getName().equals(animalNameForDelete)){//перебрати через ітератор і ремув
-                        System.out.println("Success");
-                        ArrayList<Animal> list = new ArrayList<>(mapEl.getValue());
-
-                        for (int i = 0; i < list.size(); i++){
-                            if (list.get(i).getName().equals(animalNameForDelete)){
-                                list.remove(i);
-                                mapEl.setValue(list);
-                            }
-                        }
-                        haveAnimal = true;
-                        break;
-                    }
+            Animal animalDelete = new Animal(animalTypeDelete, animalNameForDelete);
+            Iterator<Animal> animalIterator = map.get(personForSearch).iterator();
+            while (animalIterator.hasNext())
+            {
+                if (animalIterator.next().equals(animalDelete))
+                {
+                    animalIterator.remove();
+                    break;
                 }
-
-                haveNameInMap = true;
-                break;
             }
         }
-        if (!haveNameInMap){
-            System.out.println("There are not this name in the map!");
-        }
-        if (!haveAnimal){
-            System.out.println("That person doesn't have this animal!");
-        }
+
     }
 }
+
