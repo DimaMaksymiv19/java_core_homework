@@ -156,7 +156,7 @@ public class Main {
             String animalNameForDelete = scan.next();
 
             Animal animalDelete = new Animal(animalTypeDelete, animalNameForDelete);
-            Iterator<Animal> animalIterator = map.get(personForSearch).iterator();
+            Iterator<Animal> animalIterator = ((ArrayList)map.get(personForSearch)).iterator();
             while (animalIterator.hasNext())
             {
                 if (animalIterator.next().equals(animalDelete))
