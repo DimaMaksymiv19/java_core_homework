@@ -7,11 +7,11 @@ public class Main {
 
     public static void main(String[] args) {
         Map<Person, List<Animal>> map = new HashMap<>();
-        map.put(new Person("Jack", 32), Arrays.asList(new Animal("Dog", "Rex"),
-                new Animal("Rabbit", "Bunny")));
-        map.put(new Person("Poll", 21), Arrays.asList(new Animal("Cat", "Murka")));
-        map.put(new Person("Mark", 32), Arrays.asList(new Animal("Snake", "Rick"),
-                new Animal("Mouse", "Mini"), new Animal("Tiger", "Shape")));
+        map.put(new Person("Jack", 32), new ArrayList<>(Arrays.asList(new Animal("Dog", "Rex"),
+                new Animal("Rabbit", "Bunny"))));
+        map.put(new Person("Poll", 21), new ArrayList<>(Arrays.asList(new Animal("Cat", "Murka"))));
+        map.put(new Person("Mark", 32), new ArrayList<>(Arrays.asList(new Animal("Snake", "Rick"),
+                new Animal("Mouse", "Mini"), new Animal("Tiger", "Shape"))));
 
         boolean k = true;
         while (k) {
@@ -43,7 +43,16 @@ public class Main {
                     break;
                 }
                 case 3: {
-                    deleteAnimal(map,"Mark",32);
+                    System.out.println("Please enter person name:");
+                    String name = scan.next();
+                    System.out.println("Please enter person age:");
+                    int age = 0;
+                    try {
+                        age = scan.nextInt();
+                    }catch (Exception e){
+                        System.out.println("You haven't written a number");
+                    }
+                    deleteAnimal(map,name,age);
                     k = wantToContinue();
                     break;
                 }
@@ -156,7 +165,7 @@ public class Main {
             String animalNameForDelete = scan.next();
 
             Animal animalDelete = new Animal(animalTypeDelete, animalNameForDelete);
-            Iterator<Animal> animalIterator = ((ArrayList)map.get(personForSearch)).iterator();
+            Iterator<Animal> animalIterator = map.get(personForSearch).iterator();
             while (animalIterator.hasNext())
             {
                 if (animalIterator.next().equals(animalDelete))
